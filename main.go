@@ -2,13 +2,14 @@ package main
 
 import (
 	"demo/weaher/geo"
+	"demo/weaher/weather"
 	"flag"
 	"fmt"
 )
 
 func main() {
 	city := flag.String("city", "", "Город")
-	// format := flag.Int("format", 1, "Формат вывода погоды")
+	format := flag.Int("format", 1, "Формат вывода погоды")
 	flag.Parse()
 	fmt.Println(*city)
 	geoData, err := geo.GetMyLocation(*city)
@@ -16,4 +17,6 @@ func main() {
 		fmt.Println(err.Error())
 	}
 	fmt.Println(geoData)
+	weatherData := weather.GetWeather(*geoData, *format)
+	fmt.Println(weatherData)
 }
