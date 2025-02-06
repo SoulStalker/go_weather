@@ -30,3 +30,5 @@ func TestGetMyLocationNoCity(t *testing.T) {
 		t.Errorf("Exptected %v, got %v\n", geo.ErrNoCity, err)
 	}
 }
+
+
